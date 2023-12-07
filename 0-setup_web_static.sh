@@ -8,7 +8,7 @@ sudo mkdir -p /data/web_static/releases/test /data/web_static/shared/
 echo "<h1>Welcome to tech coders</h1>" | sudo dd status=none of=/data/web_static/releases/test/index.html
 # creates symbolic link
 sudo ln -sf /data/web_static/releases/test /data/web_static/current
-sudo chown _R ubuntu:ubuntu /data/
+sudo chown -R ubuntu:ubuntu /data/
 
 #settting backup for config files
 sudo cp /etc/nginx/sites-enabled/default nginx-sites-enabled_default.backup
