@@ -48,7 +48,7 @@ def is_integer(n):
     """
     Show is integer
     """
-    return "{} is a number".format(int(n))
+    return "{} is a number".format(n)
 
 
 if __name__ == "__main__":
