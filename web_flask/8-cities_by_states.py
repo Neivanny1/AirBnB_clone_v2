@@ -12,8 +12,8 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def teardown(exc):
-    """ removes current SQLAlchemy Session """
+def flask_teardown(exc):
+    '''The Flask app/request context end event listener.'''
     storage.close()
 
 
