@@ -12,16 +12,15 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def teardown(self):
+def teardown(exc):
     """ removes current SQLAlchemy Session """
     storage.close()
 
 
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
-    """ displays 8-cities_by_states.html """
-    if os.environ.get('HBNB_TYPE_STORAGE') == 'db':
-        states = storage.all("State").values()
+    """Display a HTML page with States"""
+    states = storage.all(State).values()
     return render_template('8-cities_by_states.html', states=states)
 
 
