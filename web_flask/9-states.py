@@ -14,31 +14,22 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def teardown(self):
-    """
-    Removes current SQLAlchemy Session
-    """
+    """ removes the current SQLAlchemy Session """
     storage.close()
 
 
 @app.route('/states', strict_slashes=False)
 def states():
-    """
-    Displays 9-states.html
-    """
+    """ displays 9-states.html """
     states = storage.all("State").values()
     return render_template('9-states.html', states=states)
 
 
 @app.route('/states/<id>', strict_slashes=False)
 def states_id(id):
-    """
-    Displays 9-states.html by id
-    """
+    """ displays 9-states.html by id """
     states = storage.all("State")
-    try:
-        state = states[id]
-    except:
-        state = None
+    state = states.get(id)
     return render_template('9-states.html', state=state)
 
 
